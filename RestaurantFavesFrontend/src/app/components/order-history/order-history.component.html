@@ -1,0 +1,62 @@
+
+<div>
+
+    <label for="filterR">Filter by Restaurant:</label>
+    <input (input)="GetOrders()" type="text" [(ngModel)]="filteredOrders" id="filterR" />
+    <br />
+    <label for="FilterO">Filter by Order again:</label>
+    <input (change)="GetOrders()" type="checkbox" [(ngModel)]="filterOrderAgain" value="true" id="FilterO" />
+
+</div>
+
+<h2>Order History</h2>
+
+<table>
+    <tr>
+    <th>
+<p>Description</p>
+    </th>
+    <th>
+<p>Restaurant</p>
+    </th>
+    <th>
+<p>Rating</p>
+    </th>
+    <th>
+        <p>Order Again?</p>
+    </th>
+    <th>
+<!--empty column so that delete is in this place-->
+    </th></tr>
+    <!--Content in Table starts here-->
+    @for (o of allOrders; track o.id) {
+            <tr>
+
+                <td>{{o.description}}</td>
+                <td>{{o.restaurant}}</td>
+                <td>{{o.rating}}/10</td>
+                @if(o.orderAgain){
+                    <td>✓</td>
+                }
+                @else{
+                    <td></td>
+                }
+                <td><button (click)="removeOrder(o)">x</button></td>
+    </tr>
+    }
+
+    </table>
+
+
+<!--
+   @for (o of allOrders; track o.id) {
+    <app-single-order [displayOrder]="o"></app-single-order>
+}
+ 
+
+-->
+
+
+
+<h1>Add an Order</h1>
+<app-add-order-form (submittedOrder)="addOrder($event)"></app-add-order-form>

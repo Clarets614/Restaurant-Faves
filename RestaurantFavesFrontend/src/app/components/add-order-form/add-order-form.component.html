@@ -1,0 +1,16 @@
+
+<input type="text" [(ngModel)]="formOrder.description" placeholder="Food Item" />
+<input type="text" [(ngModel)]="formOrder.restaurant" placeholder="Restaurant" />
+<input type="number" min="0" max="10" [(ngModel)]="formOrder.rating" placeholder="Rating 1-10" />
+<p>Would you Order Again?</p>
+<label for="orderAgainyes">yes</label>
+<input type="checkbox" [(ngModel)]="formOrder.orderAgain" value="true" />
+
+
+<button (click)="emitSubmitted()">Add Order</button>
+
+<!--
+<input type="radio" name="orderAgain" [(ngModel)]="formOrder" value="true" id="orderAgainyes" />
+<label for="orderAgainno">no</label>
+<input type="radio" name="orderAgain" [(ngModel)]="formOrder" value="false" id="orderAgainno" />
+-->
